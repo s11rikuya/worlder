@@ -96,6 +96,14 @@ class SinatraOmniAuth < Sinatra::Base
     erb :about
   end
 
+  get '/rule' do
+    erb :rule
+  end
+
+  get '/policy' do
+    erb :privacypolicy
+  end
+
   error do
     'Sorry there was a nasty error - ' + env['sinatra.error'].message
   end
