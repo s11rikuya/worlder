@@ -1,0 +1,32 @@
+<script>
+function initMap() {
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 4,
+    center: {lat: 28, lng: 120}
+  });
+  var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  var markers = locations.map(function(location, i) {
+    return new google.maps.Marker({
+      position: location,
+      label: labels[i % labels.length]
+    });
+  });
+
+  // ルート線を作成
+  var flightPath = new google.maps.Polyline({
+    path: locations,
+    geodesic: true,
+    strokeColor: '#FF0000',
+    strokeOpacity: 1.0,
+    strokeWeight: 2
+  });
+  flightPath.setMap(map);
+  var markerCluster = new MarkerClusterer(map, markers,
+    {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+  }
+  var locations = <%= @checkins.to_json %>
+  console.log(<%= @checkins.to_json %>)
+</script>
+<script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-XvwqNLvHjLQKRHDVNuAHPodtf8WUwz4&libraries=geometry&callback=initMap"></script>

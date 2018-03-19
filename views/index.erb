@@ -1,0 +1,39 @@
+<div style="height: calc(100% - 68px);">
+<section class="main-section">
+<% if !@checkins.empty? %>
+<div style="margin-bottom: 0px; text-align: center;" class="alert alert-success" role="alert">
+  データ解析完了
+</div>
+<div class="container-fluid" style="height: calc(100% - 52px); padding: 0;">
+<% else %>
+<div class="container-fluid" style="height: 100%; padding: 0;">
+<% end %>
+<div class="row" style="height: 100%; width: 100%; margin: 0px;">
+  <nav style="overflow: scroll;" class="col-md-3 d-none d-md-block bg-light sidebar pt-3">
+    <div class="sidebar-sticky">
+      <% if @checkins %>
+      <h5>Check-in: <%= @checkins.size %></h5>
+      <h5>Total: <%= @sum_distance %>km</h5>
+      <ol type="A">
+        <% @checkins.each do |point| %>
+        <li><%= point["name"] %><br><small><%= point["time"] %></small></li>
+        <% end %>
+      </ol>
+      <% end %>
+    </div>
+  </nav>
+  <main role="main" style="height: 100%; padding: 0px;" class="main col-md-9">
+    <div id="map"></div>
+  </main>
+</div>
+</div>
+<div class="d-md-none">
+  <div class="bg-dark py-1 d-block" style="height: 56px;">
+    <%= erb :carousel %>
+  </div>
+</div>
+</section>
+</div>
+
+
+<%= erb :js %>
