@@ -46,6 +46,14 @@ html, body {
   margin: 50px auto;
 }
 
+.about-content {
+  display: block;
+}
+
+.about-content img {
+  display: none;
+}
+
 .main-section {
   height: calc(100% - 56px);
 }
@@ -92,5 +100,17 @@ html, body {
 
   .sp-none {
     display: inline;
+  }
+
+  .about-content {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .about-content img {
+    display: block;
+    width: 450px;
+    height: 450px;
   }
 }
